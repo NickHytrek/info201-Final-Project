@@ -24,6 +24,8 @@ shinyUI(fluidPage(
                   animate = animationOptions(interval = 4000)
       ),
       
+      helpText(h5("Notice: "), p("There is no such data recorded if the error shows", strong(em("argument is of length zero")))),
+      
       textInput("text", label = h5("Convert abbreviation to actual name"), value = "USA"),
       textOutput('userText')
       

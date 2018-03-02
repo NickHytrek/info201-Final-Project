@@ -17,11 +17,15 @@ shinyServer(function(input, output) {
       group_by(Country, Medal, AAA) %>% 
       count()
     
+    if (is.na(plot.data)) {
+      return("AAAA")
+    } else {
+      ggplot(plot.data) + 
+        geom_histogram(mapping=aes(x=Country, y=n, fill = Medal), stat="identity", color = "black") +
+        scale_fill_manual(values = c("#ac6b25", "#ffd700", "#c0c0c0")) +
+        coord_flip()
+    }
     
-    ggplot(plot.data) + 
-      geom_histogram(mapping=aes(x=Country, y=n, fill = Medal), stat="identity", color = "black") +
-      scale_fill_manual(values = c("#ac6b25", "#ffd700", "#c0c0c0")) +
-      coord_flip()
     
     
   })
@@ -34,7 +38,7 @@ shinyServer(function(input, output) {
 })
 
 plot.data <- summer %>% 
-  filter(summer$Discipline == "Swimming", summer$Year == "2012") %>% 
+  filter(summer$Discipline == "Archery", summer$Year == "1944") %>% 
   mutate(AAA = paste(Country, Medal)) %>% 
   group_by(Country, Medal, AAA) %>% 
   count()
