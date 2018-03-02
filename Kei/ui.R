@@ -22,7 +22,10 @@ shinyUI(fluidPage(
                   min = 1896, max = 2012, value = 1896, step = 4, 
                   ticks = TRUE,
                   animate = animationOptions(interval = 4000)
-      )
+      ),
+      
+      textInput("text", label = h5("Text input"), value = "Enter text"),
+      textOutput('userText')
       
     ),
     

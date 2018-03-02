@@ -12,20 +12,26 @@ shinyServer(function(input, output) {
     
     plot.data <- summer %>% 
       filter(summer$Discipline == input$sports, summer$Year == input$period) %>%
-      group_by(Country) %>% 
-      count(Country)
+      mutate(AAA = paste(Country, Medal)) %>% 
+      group_by(Country, Medal, AAA) %>% 
+      count()
     
     
     ggplot(plot.data) + 
-      geom_bar(mapping=aes(x=Country, y=n), stat="identity") + 
+      geom_histogram(mapping=aes(x=Country, y=n, fill = Medal), stat="identity", color = "black") +
+      scale_fill_manual(values = c("#ac6b25", "#ffd700", "#c0c0c0")) +
       coord_flip()
     
     
   })
+  output$userText <- renderText({
+    return(paste0('The user typed: ', input$text))
+  })
 })
 
 plot.data <- summer %>% 
-  filter(summer$Discipline == "Basketball", summer$Year == "2012") %>% 
-  group_by(Country) %>% 
-  count(Country)
+  filter(summer$Discipline == "Swimming", summer$Year == "2012") %>% 
+  mutate(AAA = paste(Country, Medal)) %>% 
+  group_by(Country, Medal, AAA) %>% 
+  count()
 
