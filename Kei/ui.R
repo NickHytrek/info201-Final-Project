@@ -24,7 +24,7 @@ shinyUI(fluidPage(
                   animate = animationOptions(interval = 4000)
       ),
       
-      textInput("text", label = h5("Text input"), value = "Enter text"),
+      textInput("text", label = h5("Convert abbreviation to actual name"), value = "USA"),
       textOutput('userText')
       
     ),

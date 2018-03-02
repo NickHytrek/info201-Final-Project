@@ -5,6 +5,7 @@ library("rsconnect")
 
 summer <- read.csv("../data/summer.csv", stringsAsFactors = FALSE)
 all_country <- sort(unique(summer$Country))
+code <- read.csv("../data/dictionary.csv", stringsAsFactors = FALSE)
 
 
 shinyServer(function(input, output) {
@@ -24,8 +25,11 @@ shinyServer(function(input, output) {
     
     
   })
+  
   output$userText <- renderText({
-    return(paste0('The user typed: ', input$text))
+    code.data <- code %>% 
+      filter(Code == toupper(input$text))
+    return(paste0(input$text, " = ", code.data$Country))
   })
 })
 
