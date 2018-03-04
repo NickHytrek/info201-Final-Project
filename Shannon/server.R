@@ -4,7 +4,7 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 
-summer <- read.csv("../../data/summer.csv", stringsAsFactors = FALSE)
+summer <- read.csv("../data/summer.csv", stringsAsFactors = FALSE)
 
 sort_summer <- summer %>% 
   group_by(Gender, Year, Country) %>% 
