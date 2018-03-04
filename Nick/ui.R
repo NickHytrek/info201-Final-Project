@@ -17,7 +17,7 @@ shinyUI(fluidPage(
     ),
     
     mainPanel(
-      plotlyOutput("worldmap")
+      plotlyOutput("worldmap", width = "1000px")
     )
     
   )

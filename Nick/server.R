@@ -3,8 +3,8 @@ library(rsconnect)
 library(plotly)
 library(dplyr)
 
-summer_data <- read.csv("../data/summer.csv")
-dictionary_data <- read.csv("../data/dictionary.csv")
+summer_data <- read.csv("../Nick/NickData/summer2.csv")
+dictionary_data <- read.csv("../Nick/NickData/dictionary2.csv")
 
 sorted_summer <- summer_data %>%
   group_by(Year, Country) %>%
@@ -24,7 +24,6 @@ shinyServer(function(input, output) {
         df[i, "Medals"] <- 0
       }
     }
-    View(df)
     plot_geo(df) %>%
       add_trace(
         z = df$Medals, color = df$Medals, colors = "Blues",
