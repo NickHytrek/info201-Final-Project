@@ -39,19 +39,6 @@ shinyServer(function(input, output) {
     
     return(paste0(input$text, " = ", code.data$Country))
   })
-  
-  output$ranking <- renderText({
-    
-    plot.data <- summer %>% 
-      filter(summer$Discipline == input$sports, summer$Year == input$period) %>%
-      mutate(AAA = paste(Country, Medal)) %>% 
-      group_by(Country, Medal, AAA) %>% 
-      count() %>% 
-      arrange(-n)
-    
-    return(paste0("1st: ", plot.data[1,]$Country, " 2nd: ", 
-                  plot.data[2,]$Country, " 3rd: ", plot.data[3,]$Country))
-  })
 #----------------------to here (K)-------------------------
 #----------------------from here (Nick)---------------------
   

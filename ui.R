@@ -31,8 +31,7 @@ shinyUI(
           textOutput('userText')
         ),
         mainPanel(
-         plotOutput("plot"),
-         textOutput("ranking")
+         plotOutput("plot")
         )
       )
     ),
