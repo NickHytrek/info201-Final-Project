@@ -19,7 +19,7 @@ shinyUI(fluidPage(
       
       sliderInput(inputId = "period", 
                   label = "What period are you interested in", 
-                  min = 1896, max = 2012, value = 1896, step = 4, 
+                  min = 1896, max = 2012, value = 2012, step = 4, 
                   ticks = TRUE,
                   animate = animationOptions(interval = 4000)
       ),

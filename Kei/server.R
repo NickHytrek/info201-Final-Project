@@ -6,6 +6,7 @@ library("rsconnect")
 summer <- read.csv("../data/summer.csv", stringsAsFactors = FALSE)
 all_country <- sort(unique(summer$Country))
 code <- read.csv("../data/dictionary.csv", stringsAsFactors = FALSE)
+code[202, ]=c("The IOC country code for mixed teams at the Olympics", "ZZX")
 
 
 shinyServer(function(input, output) {
@@ -18,16 +19,14 @@ shinyServer(function(input, output) {
       count()
     
     if (is.na(plot.data)) {
-      return("AAAA")
+      return("")
     } else {
       ggplot(plot.data) + 
-        geom_histogram(mapping=aes(x=Country, y=n, fill = Medal), stat="identity", color = "black") +
-        scale_fill_manual(values = c("#ac6b25", "#ffd700", "#c0c0c0")) +
+        geom_histogram(mapping=aes(x=Country, y=n, fill = Medal), stat="identity") +
+        scale_fill_manual(values = alpha(c("#ac6b25", "#ffd700", "#c0c0c0"), 0.5)) +
+        labs(y = "Number of medals") +
         coord_flip()
     }
-    
-    
-    
   })
   
   output$userText <- renderText({
@@ -37,9 +36,5 @@ shinyServer(function(input, output) {
   })
 })
 
-plot.data <- summer %>% 
-  filter(summer$Discipline == "Archery", summer$Year == "1944") %>% 
-  mutate(AAA = paste(Country, Medal)) %>% 
-  group_by(Country, Medal, AAA) %>% 
-  count()
+
 
