@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
         z = df$Medals, color = df$Medals, colors = "Blues",
         text = df$Country, locations = df$Code, marker = list(line = list(color = toRGB("black"), width = 0.5))
       ) %>%
-      colorbar(title = "Medals") %>%
+      colorbar(title = "Medals", x = 0.75) %>%
       layout(
         title = "Total Olympic Medals Won for Each Country",
         geo = list(showframe = FALSE,
