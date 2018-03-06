@@ -55,7 +55,7 @@ shinyUI(
     ),
 
 #----------------------Shannon-------------------------------------
-    tabPanel("Medals by Gender", titlePanel("Medals Won by Men and Women in Each Country"),
+    tabPanel("Medals by Gender", titlePanel("Trend of Medals Won by Men and Women in Each Country"),
       sidebarLayout(
         sidebarPanel(
           selectInput("country_name", "Choose a country:", choices = summer_locate$Country, selected = "USA")
