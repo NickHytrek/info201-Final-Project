@@ -42,7 +42,8 @@ shinyUI(
     tabPanel("World Map", titlePanel(" "),
      verticalLayout(
        titlePanel("Total Metals Won by Each Country for Every Olympic Year"),
-       plotlyOutput("worldmap"),
+       helpText(h5("Notice: "), 
+                p("There is no data for the following years due to global conflicts; 1916, 1940, 1944")
        wellPanel(
          sliderInput(inputId = "year",
                      label = "Which year are you intersted in?",
