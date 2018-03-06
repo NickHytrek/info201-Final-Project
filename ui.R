@@ -57,6 +57,8 @@ shinyUI(
     tabPanel("Medals by Gender", titlePanel("Trend of Medals Won by Men and Women in Each Country"),
       sidebarLayout(
         sidebarPanel(
+          
+          #choose your country and find the abbreviation meaning
           selectInput("country_name", "Choose a country:", choices = summer_locate$Country, selected = "USA"),
           textInput("texty", label = h5("Convert abbreviation to actual name"), value = "USA"),
           textOutput('Text')
@@ -68,7 +70,8 @@ shinyUI(
         )
       )
     ),
-
+    
+    #creating a summary intro for our intent in a separate tab
     tabPanel("About Us", titlePanel("The History of the Olympics"),
       mainPanel(
         helpText("The Olympic Games are an international sports festival that began in ancient Greece.
