@@ -9,18 +9,21 @@ library("plotly")
 shinyServer(function(input, output) {
 #----------------From here (K)---------------------------------
   
+  ## read and organize data I need 
   summer <- read.csv("data/summer.csv", stringsAsFactors = FALSE)
   all_country <- sort(unique(summer$Country))
   code <- read.csv("data/dictionary.csv", stringsAsFactors = FALSE)
   code[202, ]=c("The IOC country code for mixed teams at the Olympics", "ZZX")
   
   output$plot <- renderPlot({
+    ## make a df which depends on user experience
     plot.data <- summer %>% 
       filter(summer$Discipline == input$sports, summer$Year == input$period) %>%
       mutate(AAA = paste(Country, Medal)) %>% 
       group_by(Country, Medal, AAA) %>% 
       count()
     
+    ## show data only when there is data to show
     if (is.na(plot.data)) {
       return("")
     } else {
@@ -33,6 +36,7 @@ shinyServer(function(input, output) {
     }
   })
   
+  ## search what abbriviation means
   output$userText <- renderText({
     code.data <- code %>% 
       filter(Code == toupper(input$text))

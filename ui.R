@@ -11,7 +11,7 @@ shinyUI(
   navbarPage("Tab",
              
 #--------------Kei-----------------------------------------------------  
-    tabPanel("Kei", titlePanel("Comparing total medal"),
+    tabPanel("Kei", titlePanel("Comparing Total Medals"),
       sidebarLayout(
         sidebarPanel(
           selectInput(inputId = "sports", 
