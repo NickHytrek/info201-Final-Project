@@ -72,7 +72,7 @@ shinyServer(function(input, output) {
       ) %>%
       colorbar(title = "Medals", x = 0.75) %>%
       layout(
-        title = "Total Olympic Medals Won for Each Country",
+        
         geo = list(showframe = FALSE,
                    showcoastlines = FALSE,
                    showcountries = TRUE,
