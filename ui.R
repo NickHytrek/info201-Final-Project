@@ -42,8 +42,7 @@ shinyUI(
     tabPanel("World Map", titlePanel(" "),
      verticalLayout(
        titlePanel("Total Metals Won by Each Country for Every Olympic Year"),
-       helpText(h5("Notice: "), 
-                p("There is no data for the following years due to global conflicts; 1916, 1940, 1944")
+       plotlyOutput("worldmap"),
        wellPanel(
          sliderInput(inputId = "year",
                      label = "Which year are you intersted in?",
@@ -59,12 +58,14 @@ shinyUI(
     tabPanel("Medals by Gender", titlePanel("Trend of Medals Won by Men and Women in Each Country"),
       sidebarLayout(
         sidebarPanel(
-          selectInput("country_name", "Choose a country:", choices = summer_locate$Country, selected = "USA")
+          selectInput("country_name", "Choose a country:", choices = summer_locate$Country, selected = "USA"),
+          textInput("texty", label = h5("Convert abbreviation to actual name"), value = "USA"),
+          textOutput('Text')
         ),
         
       #Show a plot of the generated distribution
         mainPanel(
-          plotOutput("Plot")
+          plotlyOutput("Plot")
         )
       )
     ),
@@ -82,8 +83,8 @@ tabPanel("About Us", titlePanel("The History of the Olympics"),
                     country and their specific rules, women were not able to compete until later years, explaining the
                     disparity in their display on the third visualization."),
            helpText("Keishiro Miwa is an International Student from Japan. He's in his second quarter as a Sophmore at Waseda University."),
-           helpText("Shannon Gatta is an Informatics major at the University of Washington. She is a Junior. She is from Dallas, TX."),
-           helpText("Nick Hytrek is a Classics major and an Informatics minor at the University of Washington. He is a Junior. He is from Auburn, WA. ")
+           helpText("Shannon Gatta is an Informatics major at the University of Washington. She is a Junior.She is from Dallas, TX."),
+           helpText("Nick Hytrek is an Informatics minor at the University of Washington. He is a Junior. He is from Auburn, WA. ")
            ))
 
 

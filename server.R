@@ -72,7 +72,7 @@ shinyServer(function(input, output) {
       ) %>%
       colorbar(title = "Medals", x = 0.75) %>%
       layout(
-        
+        title = "Total Olympic Medals Won for Each Country",
         geo = list(showframe = FALSE,
                    showcoastlines = FALSE,
                    showcountries = TRUE,
@@ -86,14 +86,21 @@ shinyServer(function(input, output) {
 
   
   #by filtering through the choice in country, we can break down by location how men and women have won medals
-  output$Plot <- renderPlot({
+  output$Plot <- renderPlotly({
     summer_country <- summer %>% group_by(Gender, Year, Country) %>% filter(Country == input$country_name) %>% count()
     colnames(summer_country)[colnames(summer_country) == 'n'] <- 'Medals'
-    ggplot(summer_country, aes(x = Year, y = Medals)) + 
+    p <- ggplot(summer_country, aes(x = Year, y = Medals)) + 
       geom_line(aes(colour = Gender)) + 
       ggtitle("Medals Won by Men and Women in Each Country", subtitle="This is a comparison of the amount of medals won by men and women in the country of the user's choosing.")
+    p <- ggplotly(p)
+    })
+  ## search what abbriviation means
+  output$Text <- renderText({
+    code.data <- code %>% 
+      filter(Code == toupper(input$texty))
+    
+    return(paste0(input$texty, " = ", code.data$Country))
   })
-  
 #---------------------to here (Shannon)-------------------
   
 })
