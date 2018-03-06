@@ -6,12 +6,14 @@ library("plotly")
 
 summer <- read.csv("data/summer.csv", stringsAsFactors = FALSE)
 all_sports <- sort(unique(summer$Discipline))
+#this will be used to parse the names of the country for selection
+summer_locate <- summer %>% group_by(Country) %>% count()
 
 shinyUI(
-  navbarPage("Tab",
+  navbarPage("Tabs",
              
 #--------------Kei-----------------------------------------------------  
-    tabPanel("Kei", titlePanel("Comparing Total Medals"),
+    tabPanel("Total Medals", titlePanel("Comparing Total Medals"),
       sidebarLayout(
         sidebarPanel(
           selectInput(inputId = "sports", 
@@ -37,7 +39,7 @@ shinyUI(
     ),
 
 #---------------------------Nick----------------------------------------
-    tabPanel("Nick", titlePanel("Nick"),
+    tabPanel("World Map", titlePanel(" "),
      verticalLayout(
        titlePanel("Total Metals Won by Each Country for Every Olympic Year"),
        plotlyOutput("worldmap"),
@@ -64,7 +66,24 @@ shinyUI(
           plotOutput("Plot")
         )
       )
-    )
+    ),
+
+tabPanel("About Us", titlePanel("The History of the Olympics"),
+
+
+         mainPanel(
+           helpText("The Olympic Games are an international sports festival that began in ancient Greece.
+                    The original Greek games were staged every fourth year for several hundred years, until 
+                    they were abolished in the early Christian era. The revival of the Olympic Games took place 
+                    in 1896, and since then they have been staged every fourth year, except during World War I and
+                    World War II (1916, 1940, 1944). The purpose of our analysis is to find important trends in the
+                    medals won by the Olympians from every country, man and woman from 1896 to 2014. Depending on the
+                    country and their specific rules, women were not able to compete until later years, explaining the
+                    disparity in their display on the third visualization."),
+           helpText("Keishiro Miwa is an International Student from Japan. He's in his second quarter as a Sophmore at University of Washington."),
+           helpText("Shannon Gatta is an Informatics major at the University of Washington.She is a Junior."),
+           helpText("Nick Hytrek is an...")
+           ))
 
 
 

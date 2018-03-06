@@ -83,8 +83,7 @@ shinyServer(function(input, output) {
 #---------------------to here (Nick)----------------------
 #---------------------from here (Shannon)-----------------
   
-  #this will be used to parse the names of the country for selection
-  summer_locate <- summer %>% group_by(Country) %>% count()
+
   
   #by filtering through the choice in country, we can break down by location how men and women have won medals
   output$Plot <- renderPlot({
