@@ -80,9 +80,9 @@ tabPanel("About Us", titlePanel("The History of the Olympics"),
                     medals won by the Olympians from every country, man and woman from 1896 to 2014. Depending on the
                     country and their specific rules, women were not able to compete until later years, explaining the
                     disparity in their display on the third visualization."),
-           helpText("Keishiro Miwa is an International Student from Japan. He's in his second quarter as a Sophmore at University of Washington."),
-           helpText("Shannon Gatta is an Informatics major at the University of Washington.She is a Junior."),
-           helpText("Nick Hytrek is an...")
+           helpText("Keishiro Miwa is an International Student from Japan. He's in his second quarter as a Sophmore at Waseda University."),
+           helpText("Shannon Gatta is an Informatics major at the University of Washington. She is a Junior.She is from Dallas, TX."),
+           helpText("Nick Hytrek is an Informatics major at the University of Washington. He is a Junior. He is from Auburn, WA. ")
            ))
 
 
