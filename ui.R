@@ -82,8 +82,8 @@ tabPanel("About Us", titlePanel("The History of the Olympics"),
                     country and their specific rules, women were not able to compete until later years, explaining the
                     disparity in their display on the third visualization."),
            helpText("Keishiro Miwa is an International Student from Japan. He's in his second quarter as a Sophmore at Waseda University."),
-           helpText("Shannon Gatta is an Informatics major at the University of Washington. She is a Junior.She is from Dallas, TX."),
-           helpText("Nick Hytrek is an Informatics minor at the University of Washington. He is a Junior. He is from Auburn, WA. ")
+           helpText("Shannon Gatta is an Informatics major at the University of Washington. She is a Junior. She is from Dallas, TX."),
+           helpText("Nick Hytrek is a Classics major and an Informatics minor at the University of Washington. He is a Junior. He is from Auburn, WA. ")
            ))
 
 
