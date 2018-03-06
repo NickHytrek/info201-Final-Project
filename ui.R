@@ -53,12 +53,13 @@ shinyUI(
     ),
 
 #----------------------Shannon-------------------------------------
-    tabPanel("Shannon", titlePanel("Medals Won by Men and Women in Each Country"),
+    tabPanel("Medals by Gender", titlePanel("Medals Won by Men and Women in Each Country"),
       sidebarLayout(
         sidebarPanel(
-          selectInput("country_name", "Choose a country:", choices = summer$Country)
+          selectInput("country_name", "Choose a country:", choices = summer_locate$Country, selected = "USA")
         ),
-      # Show a plot of the generated distribution
+        
+      #Show a plot of the generated distribution
         mainPanel(
           plotOutput("Plot")
         )

@@ -79,18 +79,18 @@ shinyServer(function(input, output) {
 #---------------------to here (Nick)----------------------
 #---------------------from here (Shannon)-----------------
   
-  sort_summer <- summer %>% 
-    group_by(Gender, Year, Country) %>% 
-    count(Gender)
+  #this will be used to parse the names of the country for selection
+  summer_locate <- summer %>% group_by(Country) %>% count()
   
+  #by filtering through the choice in country, we can break down by location how men and women have won medals
   output$Plot <- renderPlot({
-    #test <- input$country_namedfdf
     summer_country <- summer %>% group_by(Gender, Year, Country) %>% filter(Country == input$country_name) %>% count()
     colnames(summer_country)[colnames(summer_country) == 'n'] <- 'Medals'
     ggplot(summer_country, aes(x = Year, y = Medals)) + 
       geom_line(aes(colour = Gender)) + 
       ggtitle("Medals Won by Men and Women in Each Country", subtitle="This is a comparison of the amount of medals won by men and women in the country of the user's choosing.")
   })
+  
 #---------------------to here (Shannon)-------------------
   
 })

@@ -1,0 +1,12 @@
+# Final Project Repository for the group, Kamikaze Ninjas, for INFO 201B, Winter 2018
+## By Keishiro Miwa, Shannon Gatta, Nick Hytrek
+
+---
+
+To locally source our data, go to [this link](https://www.kaggle.com/the-guardian/olympic-games/data "Olympic Data").
+
+
+## The History of the Olympics 
+
+The Olympic Games are an international sports festival that began in ancient Greece. The original Greek games were staged every fourth year for several hundred years, until they were abolished in the early Christian era. The revival of the Olympic Games took place in 1896, and since then they have been staged every fourth year, except during World War I and World War II (1916, 1940, 1944). The purpose of our analysis is to find important trends in the medals won by the Olympians from every country, man and woman from 1896 to 2014. Depending on the country and their specific rules, women were not able to compete until later years, explaining the disparity in their display on the third visualization. 
+
