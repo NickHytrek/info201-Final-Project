@@ -49,22 +49,32 @@ shinyServer(function(input, output) {
   summer_data <- read.csv("Nick/NickData/summer2.csv")
   dictionary_data <- read.csv("Nick/NickData/dictionary2.csv")
   
+  #Sort summer data by year and country and sum every medal won by that country for that year
   sorted_summer <- summer_data %>%
     group_by(Year, Country) %>%
     summarise("Medals" = n())
   
+  #Change the name of the column to match the other data frame, the join the two dataframes to make 
+  #pulling the data by the year easier
   colnames(sorted_summer)[colnames(sorted_summer) == "Country"] <- "Code"
   sorted_summer <- left_join(sorted_summer, dictionary_data, by = "Code")
   
+  #Server output for the world map
   output$worldmap <- renderPlotly({  
     
+    #Get the rows of data for the user specified year
     df <- filter(sorted_summer, Year == input$year)
     
+    #Clean any rows where a country did not win a medal of NA's to 0's
     for (i in 1:nrow(df)) {
       if (is.na(df[i,"Medals"])) {
         df[i, "Medals"] <- 0
       }
     }
+    
+    #Plotly ouput a choropleth map. Color is based upon medals won by each country. It is associated to the map by
+    #Country code and will display the code and total medals on hover over of the country. Builds a color bar to the right
+    #of the map, and removes coastlines and makes sure all countries are visible even if there is no data at all.
     plot_geo(df) %>%
       add_trace(
         z = df$Medals, color = df$Medals, colors = "Blues",

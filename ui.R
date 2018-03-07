@@ -40,12 +40,19 @@ shinyUI(
 
 #---------------------------Nick----------------------------------------
     tabPanel("World Map", titlePanel(" "),
-<<<<<<< HEAD
      verticalLayout(
+       
+       #Title of graph
        titlePanel("Total Metals Won by Each Country for Every Olympic Year"),
+       
+       #Text to inform users about missing data for some years
        helpText(h5("Notice: "), 
                 p("There is no data for the following years due to global conflicts; 1916, 1940, 1944")),
+       
+       #Output map
        plotlyOutput("worldmap"),
+       
+       #Create slider that will allow users to change what year of data they would like to have displayed
        wellPanel(
          sliderInput(inputId = "year",
                      label = "Which year are you intersted in?",
@@ -55,19 +62,6 @@ shinyUI(
          )
        )
      )
-=======
-      verticalLayout(
-        titlePanel("Total Metals Won by Each Country for Every Olympic Year"),
-        helpText(h5("Notice: "),
-                 p("There is no data for the following years due to global conflicts; 1916, 1940, 1944")),
-        wellPanel(
-          sliderInput(inputId = "year", label = "Which year are you intersted in?",
-                      min = 1896, max = 2012, value = 1896, step = 4,
-                      ticks = TRUE, animate = animationOptions(interval = 4000)
-          )
-        )
-      )
->>>>>>> 216e7679706a72bed2c59629b332789a9f74cff4
     ),
 
 #----------------------Shannon-------------------------------------
