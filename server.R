@@ -59,13 +59,15 @@ shinyServer(function(input, output) {
   colnames(sorted_summer)[colnames(sorted_summer) == "Country"] <- "Code"
   sorted_summer <- left_join(sorted_summer, dictionary_data, by = "Code")
   
-  host <- sorted_summer[1, "City"]
-  
   #Server output for the world map
   output$worldmap <- renderPlotly({  
     
     #Get the rows of data for the user specified year
     df <- filter(sorted_summer, Year == input$year)
+    
+    #Get the name of the host city
+    host <- filter(summer_data, Year == input$year) 
+    host <- toString(host[1, 2])
     
     #Clean any rows where a country did not win a medal of NA's to 0's
     for (i in 1:nrow(df)) {
