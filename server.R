@@ -59,6 +59,8 @@ shinyServer(function(input, output) {
   colnames(sorted_summer)[colnames(sorted_summer) == "Country"] <- "Code"
   sorted_summer <- left_join(sorted_summer, dictionary_data, by = "Code")
   
+  host <- sorted_summer[1, "City"]
+  
   #Server output for the world map
   output$worldmap <- renderPlotly({  
     
@@ -82,7 +84,7 @@ shinyServer(function(input, output) {
       ) %>%
       colorbar(title = "Medals", x = 0.75) %>%
       layout(
-        
+        title = (paste("Host city: ", host)),
         geo = list(showframe = FALSE,
                    showcoastlines = FALSE,
                    showcountries = TRUE,
