@@ -60,7 +60,16 @@ shinyUI(
                      ticks = TRUE,
                      animate = animationOptions(interval = 4000)
          )
-       )
+       ),
+       helpText(h5("Analysis"),
+         p("This graph displays the total number of medals that each country earned for each Summer Olympics that 
+            has taken place since 1896, except for 1916, 1940, and 1944. What you can see from the graph is as  
+            time progresses, you can see more and more countries beginning to participate in the Olympics. You can 
+            also see that very often global politics influence the olympics, such as the 1980 olympics in the USSR
+            that the U.S. and many other countries boycotted, and then the following olympics of 1984 in the U.S. 
+            which the USSR boycotted as well. In addition it seems that quite often the country hosting the olympics 
+            tends to see an increase in the total medals that it wins, for example Greece in 1896 and Germany in 1936.
+           "))
      )
     ),
 
