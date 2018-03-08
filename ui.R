@@ -84,18 +84,19 @@ shinyUI(
           textOutput('Text')
         ),
         
-        helpText(h5("Analysis"),
-                 p("This graph depicts all the women and men medal winners for the history of the Summer Olympics 
+        
+      #Show a plot of the generated distribution
+        mainPanel(
+          plotlyOutput("Plot"),
+          
+          helpText(h5("Analysis"),
+                   p("This graph depicts all the women and men medal winners for the history of the Summer Olympics 
                    (1896-2012). Grouping by country, you can see the rise and fall of each country's winnings. Depending on
                    sport and country, you'll notice there are different induction years into sport participation in the Olympics.
                    What varies greatly for almost every country is the induction date for females vs. males. Commonly, men are
                    inducted into participations first with women to follow in later years, if at all. Not one country has only 
                    females representing their country. Notice: For all countries, there will be no data for 1916, 1940, and 1944 
-                   due to the Olympic games being cancelled because of the World Wars.")),
-        
-      #Show a plot of the generated distribution
-        mainPanel(
-          plotlyOutput("Plot")
+                   due to the Olympic games being cancelled because of the World Wars."))
         )
       )
     ),
